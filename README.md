@@ -43,7 +43,13 @@ In the course of this 2-day workshop, students will gain experience constructing
 
 ## Learning objectives
 
-LEARNING_OBJECTIVES
+Attendees will learn:
+
+1. The many capabilities of R Markdown, and how to use it as an authoring tool.
+2. How to parameterize and publish data science reports and papers from R Markdown.
+3. How to make their publications come alive with interactive dashboards using htmlwidgets and Shiny.
+
+
 
 ## Is this course for me?
 

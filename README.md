@@ -53,7 +53,15 @@ Attendees will learn:
 
 ## Is this course for me?
 
-THREE_QUESTIONS
+This class is appropriate for attendees who want to:
+
+1. Create reproducible data analyses and reports that can be shared with a large audience.
+2. Craft interactive dashboards for others to understand their data and analyses. 
+3. Build stand-alone Web applications that allow users to visually explore data and find insights of their own.
+
+While no experience with R is required for our work with R Markdown, attendees will need knowledge of R and some experience with the tidyverse to build Shiny Web applications.
+
+
 
 ## Prework
 

@@ -25,7 +25,21 @@ can remove these instructions from the README.
 
 ## Overview
 
-ABSTRACT
+This 2-day introductory workshop will teach students the fundamentals how to create R Markdown scripts for reports and interactive applications. Attendees will learn how to:
+
+• Design R Markdown for reproducibility and reuse.
+• Craft their own R Markdown reports.
+• Parameterize R Markdown content for personalized report generation
+• Publish R Markdown content to other servers such as RStudio Connect and RPubs.
+• Add flexdashboard interactive elements and pages to R Markdown documents
+• Combine htmlwidgets with static content to create dynamic dashboards
+• How to add Shiny interactivity to your dashboard.
+• Structure dashboards to visualize data from real-time Web sources
+• Design interactive applications for best performance
+
+In the course of this 2-day workshop, students will gain experience constructing several reports and dashboards from data sets provided to the class. We'll also touch on what students would need to deploy such applications within their own organizations. Attendees will also participate in a session with Xihui Xie, the creator and co-author of R Markdown, to learn the details behind how R Markdown actually works and to get answers to their thorniest R Markdown questions.
+
+
 
 ## Learning objectives
 

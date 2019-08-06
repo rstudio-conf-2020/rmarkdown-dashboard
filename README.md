@@ -3,7 +3,7 @@ R Markdown and Interactive Dashboards
 
 ### rstudio::conf 2020
 
-by INSTRUCTOR_NAME
+by Carl Howe and Yihui Xie
 
 -----
 

@@ -1,4 +1,4 @@
-WORKSHOP_TITLE
+R Markdown and Interactive Dashboards
 ================
 
 ### rstudio::conf 2020

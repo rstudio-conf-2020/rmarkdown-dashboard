@@ -1,0 +1,34 @@
+---
+title: "Babynames with YAML Parameters"
+output: 
+  flexdashboard::flex_dashboard
+params:
+  name: Carl
+  gender: M
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(dplyr)
+library(magrittr)
+library(babynames)
+library(flexdashboard)
+
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Welcome
+
+In this dashboard, we'll plot the popularity of a parameterized name versus the male name Garrett.
+
+### Proportional popularity of Garrett versus `r params$name`
+
+```{r echo = FALSE, message = FALSE, warning = FALSE, out.width = "90%"}
+theme_set(theme_minimal())
+babynames %>% 
+  filter(    (name == "Garrett" & sex == "M") |
+             (name == params$name & sex == params$gender)) %>% 
+  ggplot() +
+    geom_line(aes(x = year, y = prop, group = name, color = name))
+```
+

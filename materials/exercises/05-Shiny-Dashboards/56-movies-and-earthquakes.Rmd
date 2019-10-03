@@ -1,0 +1,111 @@
+---
+title: "Combined Movies and Earthquakes"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+  runtime: shiny
+---
+
+```{r setup, include=FALSE}
+library(shiny)
+library(ggplot2)
+library(dplyr)
+library(plotly)
+library(geonames)
+library(magrittr)
+library(flexdashboard)
+library(leaflet)
+
+load("data/movies.Rdata")
+theme_set(theme_minimal())
+options(geonamesUsername="rstudio_dashboard")
+
+latest_earthquakes <- GNearthquakes(north=90,south=-90,west=-180,east=180,date=Sys.Date(), maxRows = 50)
+latest_earthquakes <- latest_earthquakes %>% 
+    mutate(magnitude = round(as.numeric(as.character(magnitude)),1),
+         lat = round(as.numeric(as.character(lat)), 3),
+         lng = round(as.numeric(as.character(lng)), 3))
+```
+
+## Column {data-width=350}
+
+
+### Inputs
+
+```{r}
+xy_choices <- c("imdb_rating", "critics_score", "audience_score", "runtime")
+z_choices <- c("title_type", "genre", "mpaa_rating", "critics_rating", "audience_rating")
+selected_columns <- c(xy_choices, z_choices)
+
+# Select variable for y-axis ----------------------------------
+      selectInput(inputId = "y",    # this is the name of a reactive input variable
+                  label = "Y-axis:",
+                  choices = xy_choices, 
+                  selected = "audience_score")
+      
+      # Select variable for x-axis ----------------------------------
+      selectInput(inputId = "x",    # this is the name of a reactive input variable
+                  label = "X-axis:",
+                  choices = xy_choices, 
+                  selected = "critics_score")
+      # Select variable for color axis ----------------------------------
+      selectInput(inputId = "z", 
+                  label = "Color by:",
+                  choices = z_choices,
+                  selected = "mpaa_rating")
+
+      # Set alpha level ---------------------------------------------
+      sliderInput(inputId = "alpha", 
+                  label = "Alpha:", 
+                  min = 0, max = 1, 
+                  value = 0.5)
+      # Set size  ---------------------------------------------
+      sliderInput(inputId = "size", 
+                  label = "Size:", 
+                  min = 1, max = 10, 
+                  value = 3)
+
+      # Select genre for filtering
+      selectInput(inputId = "genre_selection", 
+                  label = "Filter by genre:",
+                  choices = movies %>% select(genre) %>% unique(),
+                  selected = "mpaa_rating")
+
+
+### $$$ change this statement to create a reactive expression reactive_movies using the reactive ({}) function
+# filtered_movies <- movies %>% 
+#  filter(genre == input$genre_selection)
+
+reactive_movies <- reactive ({
+    movies %>% 
+      filter(genre == input$genre_selection)
+})
+
+```
+
+## Column {data-width=550}
+
+### Output Plot
+
+```{r plot}
+
+### $$$ change the variable filtered_movies to the reactive expression reactive_movies()
+renderPlot({
+    ggplot(data = reactive_movies(), aes_string(x = input$x, y = input$y,
+                                     color = input$z)) +
+      geom_point(alpha = input$alpha, size = input$size)
+  })
+```
+
+### Output Data Table
+
+```{r datatable}
+
+### $$$ change the variable filtered_movies to the reactive expression reactive_movies()
+DT::renderDataTable({
+  DT::datatable(data = reactive_movies(),
+                    options = list(pageLength = 10, rownames = FALSE) 
+                    ) 
+  })
+```

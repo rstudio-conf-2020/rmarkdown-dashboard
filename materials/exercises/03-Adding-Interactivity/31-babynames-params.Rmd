@@ -1,0 +1,43 @@
+---
+title: "Babynames with YAML Parameters"
+output: 
+  flexdashboard::flex_dashboard
+params:
+  name: Carl
+  gender: M
+  comparison_name: Garrett
+  comparison_gender: M
+  beginning_year: 1880
+  ending_year: 2017
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(dplyr)
+library(magrittr)
+library(babynames)
+
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Welcome
+
+In this dashboard, we'll plot the popularity of two names over the centuries
+
+### Proportional popularity
+
+```{r echo = FALSE, message = FALSE, warning = FALSE, out.width = "90%"}
+theme_set(theme_minimal())
+babynames %>% 
+  filter(    (name == params$comparison_name & sex == params$comparison_gender) |
+             (name == params$name & sex == params$gender)) %>% 
+  filter(year >= params$beginning_year & year <= params$ending_year) %>% 
+  ggplot() +
+    geom_line(aes(x = year, y = prop, group = name, color = name)) +
+    ggtitle(paste0("Proportional popularity of ", params$comparison_name,
+                   " versus ", params$name,
+                   " from ", params$beginning_year,
+                   " to ", params$ending_year))
+
+```
+

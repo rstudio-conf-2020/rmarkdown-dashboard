@@ -1,0 +1,65 @@
+---
+title: "Flexdashboard displays demo"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r, include = FALSE}
+library(ggplot2)
+library(dplyr)
+library(plotly)
+library(DT)
+library(geonames)
+library(leaflet)
+
+options(geonamesUsername="rstudio_dashboard")
+
+mtcars$cyl <- as.factor(mtcars$cyl)
+theme_set(theme_minimal())
+latest_earthquakes <- GNearthquakes(north=90,south=-90,west=-180,east=180,date=Sys.Date(), maxRows = 50)
+latest_earthquakes <- latest_earthquakes %>% 
+    mutate(magnitude = round(as.numeric(as.character(magnitude)),1),
+         lat = round(as.numeric(as.character(lat)), 3),
+         lng = round(as.numeric(as.character(lng)), 3))
+```
+
+# A Cornucopia of Displays
+
+## Column 1
+
+### mtcars Chart 1
+
+```{r plot1}
+ggplot(mtcars, aes(disp, hp, color = cyl)) + geom_point()
+```
+
+### mtcars Chart 2
+
+```{r plot2}
+ggplot(mtcars, aes(mpg, hp, color = cyl)) + geom_point()
+```
+ 
+### mtcars Chart 3
+
+```{r plot3}
+ggplot(mtcars, aes(mpg, wt, color = cyl)) + geom_point()
+```
+
+## Column 2 {.tabset .tabset-fade}
+
+### mtcars Table
+
+```{r table1}
+mtcars
+```
+
+### Earthquake Map (you must insert code to map latest_earthquakes)
+
+```{r map}
+# you may want to hit F1 on leaflet to find out what to do here.
+leaflet() %>% 
+  _______  %>%             # something to get the map going
+  _______                  # something to plot earthquakes
+```

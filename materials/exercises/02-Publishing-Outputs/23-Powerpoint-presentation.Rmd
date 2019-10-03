@@ -1,0 +1,48 @@
+---
+title: "Simple Markdown File"
+output: 
+  powerpoint_presentation:
+    reference_doc: templates/earl-template.pptx
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Title
+
+## Heading For Bullets
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+## Table Output
+
+Here's a Level 2 table
+
+```{r cars, echo = TRUE}
+summary(cars)
+```
+
+## An Equation
+
+$$
+\int_{-\infty}^\infty e^{-x^2} dx = \sqrt{\pi}
+$$
+
+## A Plot
+
+Here's a Level 2 plot
+
+```{r pressure}
+plot(pressure)
+```
+
+## Another Section Head
+
+This section is intended to show how multiple levels of headers work. The ## creates a new slide.
+
+### Subheads or Tab Titles
+
+The level 3 header just shows up as a sub-header.

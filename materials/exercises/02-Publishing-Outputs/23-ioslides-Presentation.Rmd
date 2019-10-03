@@ -1,0 +1,49 @@
+---
+title: "Simple Markdown File"
+output: 
+  revealjs::revealjs_presentation:
+    widescreen: true
+    transition: fade
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# R Markdown Rocks! {data-background=images/tower.png data-background-size=100%}
+
+## Heading For Bullets {data-background=images/tower.png data-background-size=cover}
+
+<div class="red">
+- Bullet 1
+- Bullet 2
+- Bullet 3
+</div>
+
+## Table Output
+
+Here's a Level 2 table
+
+```{r cars, echo = TRUE}
+summary(cars)
+```
+
+## An Equation
+
+$$
+\int_{-\infty}^\infty e^{-x^2} dx = \sqrt{\pi}
+$$
+
+## Plot
+
+```{r pressure, echo=TRUE}
+plot(pressure)
+```
+
+## Another Section Head
+
+This section is intended to show how multiple levels of headers work. The ## creates a new slide.
+
+### Subheads or Tab Titles
+
+The level 3 header just shows up as a sub-header.

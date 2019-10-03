@@ -1,0 +1,64 @@
+---
+title: "Babynames with Shiny Parameters"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(dplyr)
+library(magrittr)
+library(babynames)
+library(flexdashboard)
+
+comparison_name <- "Garrett"
+comparison_gender <- "M"
+
+theme_set(theme_minimal())
+```
+
+# Description
+
+You can embed Shiny inputs and outputs in your document. Outputs are automatically updated whenever inputs change.  This demonstrates how a standard R plot can be made interactive by wrapping it in the Shiny `renderPlot` function. The `textInput`, `selectInput`, and `sliderInput` functions create the input widgets used to drive the plot.
+
+## Column {data-width=200}
+
+### Inputs
+
+```{r inputs, echo=FALSE}
+inputPanel(
+  textInput("name", label = "Name", value = "Carl"),
+  selectInput("gender", label = "Gender",
+              choices = c("M", "F"), selected = "M"),
+  sliderInput("range", "Range:",
+                  min = 1880, max = 2017,
+                  value = c(1880,2017),
+                  sep = ""
+              )
+  )
+```
+
+## Column {data-width=600}
+
+### Popularity Graph
+
+```{r echo = FALSE, message = FALSE, warning = FALSE, out.width = "90%"}
+
+renderPlot({
+  dataset <- babynames %>% 
+    filter(    (name == "Garrett" & sex == "M") |
+               (name == input$name & sex == input$gender)) %>% 
+    filter(year >= input$range[1] & year <= input$range[2])
+  
+  p <-  ggplot(dataset) +
+    geom_line(aes(x = year, y = prop, group = name, color = name)) +
+    ggtitle(paste0("Proportional popularity of ", comparison_name,
+                   " versus ", input$name,
+                   " from ", input$range[1],
+                   " to ", input$range[2]))
+  
+  print(p)
+})

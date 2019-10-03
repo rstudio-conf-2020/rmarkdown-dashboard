@@ -1,0 +1,27 @@
+---
+output: html_document
+---
+
+```{r setup}
+library(reticulate)
+```
+
+
+## Bash
+
+```{bash bash_chunk}
+ls *.Rmd
+```
+
+## Python
+
+```{python python_code}
+python_string = "hello, python world"
+print(python_string.split(" "))
+```
+
+## R
+
+```{r r_code}
+print(paste0(py$python_string, " from R!"))
+```

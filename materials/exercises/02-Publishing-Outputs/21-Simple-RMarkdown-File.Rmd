@@ -1,0 +1,42 @@
+---
+title: "Simple Markdown File"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Level 1 Heading (Page or Document Titles)
+
+## Level 2 Heading For Bullets
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+## Level 2 Table Output
+
+Here's a Level 2 table
+
+```{r cars, echo = TRUE}
+summary(cars)
+```
+
+## Level 2: An Equation
+
+$$
+\int_{-\infty}^\infty e^{-x^2} dx = \sqrt{\pi}
+$$
+
+## A Level 2 Plot
+
+Here's a Level 2 plot
+
+```{r pressure}
+plot(pressure)
+```
+
+### Level 3 Heading (Subheads or Tab Titles)
+
+This just illustrates how level 3 subsections are rendered

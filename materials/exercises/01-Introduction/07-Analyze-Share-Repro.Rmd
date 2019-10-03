@@ -1,0 +1,5 @@
+---
+output: html_document
+---
+
+Analyze. Share. Reproduce. and do it all with R Markdown. Your data tells a story. Tell it with R Markdown. Turn your analyses into high quality documents, reports, presentations and dashboards - and don't forget to drink some H20 while you do that. R Markdown documents are fully reproducible. Use a productive notebook interface to weave together narrative text and code to produce elegantly formatted output. Use multiple languages including R, Python, and SQL. Do you need still need convincing to use R Markdown? See what a friend once said: I used to use Sweave, and get terrible headaches. Now I use R Markdown, and life is much more pleasant. Or coffee, whatever floats your boat. This link should point to http://rmarkdown.rstudio.com/r_notebooks.html.

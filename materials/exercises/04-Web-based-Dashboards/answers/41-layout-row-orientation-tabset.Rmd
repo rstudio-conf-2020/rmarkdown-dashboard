@@ -1,0 +1,42 @@
+---
+title: "Flexdashboard, column orientation"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r, include = FALSE}
+library(ggplot2)
+library(dplyr)
+library(plotly)
+
+mtcars$cyl <- as.factor(mtcars$cyl)
+theme_set(theme_minimal())
+```
+
+# Top Level Page -- it gets its own menu tab
+
+This is the top level page; it is not part of the grid.
+
+## Row 1
+
+### Chart 1
+
+```{r plot1}
+ggplot(mtcars, aes(disp, hp, color = cyl)) + geom_point()
+```
+
+## Row 2 {.tabset .tabset-fade}
+    
+### Chart 2
+
+```{r plot2}
+ggplot(mtcars, aes(mpg, hp, color = cyl)) + geom_point()
+```
+ 
+### Chart 3
+
+```{r plot3}
+ggplot(mtcars, aes(mpg, wt, color = cyl)) + geom_point()
+```

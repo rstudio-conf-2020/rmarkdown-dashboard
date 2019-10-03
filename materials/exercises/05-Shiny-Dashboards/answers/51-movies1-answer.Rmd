@@ -1,0 +1,48 @@
+---
+title: "Movies Dashboard with Shiny Inputs"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+  runtime: shiny
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(shiny)
+library(ggplot2)
+load("../data/movies.Rdata")
+theme_set(theme_minimal())
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Inputs
+
+```{r}
+choices <- c("imdb_rating", "imdb_num_votes", "critics_score", "audience_score", "runtime")
+# Select variable for y-axis ----------------------------------
+      selectInput(inputId = "y",    # this is the name of a reactive input variable
+                  label = "Y-axis:",
+                  choices = choices, 
+                  selected = "audience_score")
+      
+      # Select variable for x-axis ----------------------------------
+      selectInput(inputId = "x",    # this is the name of a reactive input variable
+                  label = "X-axis:",
+                  choices = choices, 
+                  selected = "critics_score")
+```
+
+Column {data-width=550}
+-----------------------------------------------------------------------
+
+### Output
+
+```{r}
+renderPlot({
+    ggplot(data = movies, aes_string(x = input$x, y = input$y)) +
+      geom_point()
+  })
+```

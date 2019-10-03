@@ -1,0 +1,75 @@
+---
+title: "A Weather Report"
+author: "Carl Howe, RStudio"
+date: "8/21/2019"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(geonames)
+library(knitr)
+library(dplyr)
+```
+
+## Building A Report From The R Markdown Template
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+This document is created directly from the original RStudio R Markdown template. I simply typed in all the text you see below to replace the summary of *cars* and the graph of *pressure*.
+
+Instead of printing out a summary of the cars dataset, I've modified the default template here to get some selected bits of weather from [London City Airport](https://www.londoncityairport.com), and print them out instead. Don't get hung up on the 
+
+```{r get_weather}
+options(geonamesUsername="rstudio_dashboard")    #  Login name for geonames
+LCY_observation    <- GNweatherIcao("EGLC")      # EGLC is London City
+london_weather <- LCY_observation %>%            # Extract 5 columns
+    select(stationName, datetime, temperature, humidity)
+print(london_weather)
+```
+
+## Inserting Links to Other Sites
+
+It's easy to include links to other sites. Simply put the text you want displayed in square brackets, followed by the target URL of the site in normal parentheses. Your link codeshould look like this:
+
+    [Text you want displayed for the link](https://link-target)
+
+So to link to the BBC London Weather, you'd use this code:
+
+    [BBC London Weather](https://www.bbc.com/weather/2643743)
+
+When it's knit, this is what your link will look like.
+
+[BBC London Weather](https://www.bbc.com/weather/2643743)
+
+
+## Inserting Local Images
+
+Local images are easy to include in R Markdown. The general form is as follows:
+
+    ![Alternate text for image](path/to/image.png)
+
+So to include an image of the London skyline that I've conveniently stored in the images directory for this R project, I'd write
+
+    ![*London Skyline*](images/london_skyline.png)
+
+Here's what that photo looks like:
+
+![*London Skyline*](images/london_skyline.png)
+
+## Getting Images From Other Sites
+
+But what if you don't a copy of the image you want to include, but you know it's available on the internet? In that case, you can use either the same insert  the R function *include_graphics* from the *knitr* package.
+
+```{r precipitation_report}
+knitr::include_graphics("https://www.cpc.ncep.noaa.gov/products/JAWF_Monitoring/Europe/daily/p.1day.figa.gif")
+```
+
+You can also embed dynamic images, provided that the web site returns the image a .png, a .jpg, or a .gif object. Here's a real-time satellite image.
+
+```{r pressure}
+knitr::include_graphics("https://en.sat24.com/image?type=visual&region=gb")
+```
+

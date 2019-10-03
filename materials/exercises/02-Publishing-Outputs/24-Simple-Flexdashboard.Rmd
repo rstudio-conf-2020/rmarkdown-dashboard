@@ -1,0 +1,42 @@
+---
+title: "Simple Markdown File"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(flexdashboard)
+```
+
+# My Flexdashboard
+
+## Heading For Bullets
+Here are some bullets in a level 2 section.
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+## Table Output
+
+Here's a table in a level 2 section
+
+```{r cars, echo = TRUE}
+summary(cars)
+```
+
+### An Equation
+This is an equation in a level 3 heading
+$$
+\int_{-\infty}^\infty e^{-x^2} dx = \sqrt{\pi}
+$$
+
+### A Plot
+
+Here's a Level 3 plot
+
+```{r pressure}
+plot(pressure)
+```

@@ -1,0 +1,74 @@
+---
+title: "Movies Dashboard with Shiny Inputs"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+  runtime: shiny
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(shiny)
+library(ggplot2)
+library(dplyr)
+load("../data/movies.Rdata")
+theme_set(theme_minimal())
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Inputs
+
+```{r}
+xy_choices <- c("imdb_rating", "critics_score", "audience_score", "runtime")
+z_choices <- c("title_type", "genre", "mpaa_rating", "critics_rating", "audience_rating")
+selected_columns <- c(xy_choices, z_choices)
+
+# Select variable for y-axis ----------------------------------
+      selectInput(inputId = "y",    # this is the name of a reactive input variable
+                  label = "Y-axis:",
+                  choices = xy_choices, 
+                  selected = "audience_score")
+      
+      # Select variable for x-axis ----------------------------------
+      selectInput(inputId = "x",    # this is the name of a reactive input variable
+                  label = "X-axis:",
+                  choices = xy_choices, 
+                  selected = "critics_score")
+      # Select variable for color axis ----------------------------------
+      selectInput(inputId = "z", 
+                  label = "Color by:",
+                  choices = z_choices,
+                  selected = "mpaa_rating")
+
+      # Set alpha level ---------------------------------------------
+      sliderInput(inputId = "alpha", 
+                  label = "Alpha:", 
+                  min = 0, max = 1, 
+                  value = 0.5)
+```
+
+Column {data-width=550}
+-----------------------------------------------------------------------
+
+### Output Plot
+
+```{r plot}
+renderPlot({
+    ggplot(data = movies %>% select(selected_columns), aes_string(x = input$x, y = input$y,
+                                     color = input$z)) +
+      geom_point(alpha = input$alpha)
+  })
+```
+
+### Output Data Table
+
+```{r datatable}
+DT::renderDataTable({
+      DT::datatable(data = movies %>% select(selected_columns), 
+                    options = list(pageLength = 10, rownames = FALSE) 
+                    ) 
+  })
+```

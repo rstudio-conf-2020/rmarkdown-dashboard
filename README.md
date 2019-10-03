@@ -65,12 +65,28 @@ While no experience with R is required for our work with R Markdown, attendees w
 
 ## Prework
 
-\[ADD INFORMATION YOU WANT LEARNERS TO HAVE / STEPS THEY WANT THEM TO
-COMPLETE PRIOR TO THE WORKSHOP. THIS COULD BE A LINK TO A THREAD ON
-RSTUDIO COMMUNITY, PACKAGE INSTALL INSTRUCTIONS, HOW TO GET AN
-RSTUDIO.CLOUD ACCOUNT, ETC.\]
+You will need accounts on 3 cloud services to do all the exercises in this course:
+
+- *rstudio.cloud*. If you don't already have one, please create an `rstudio.cloud` account for yourself so that you can do the exercises associated with this course. This will only require an email address, and no personal information will be recorded. 
+- *rpubs.com*. If you don't already have one, please create an `RPubs.com` account so that you can publish your RMarkdown documents. Again, no personal information other than your email addrss will be recorded.
+- *shinyapps.io*. If you don't already have one, please create a `Shinyapps.io` account so that you can publish your Shiny dashboards. 
+
 
 ## Schedule
+
+### Day 1
+
+| Time          | Activity         |
+| :------------ | :--------------- |
+| 09:00 - 10:30 | Session 1        |
+| 10:30 - 11:00 | *Coffee break*   |
+| 11:00 - 12:30 | Session 2        |
+| 12:00 - 13:30 | *Lunch break*    |
+| 13:30 - 15:00 | Session 3        |
+| 15:00 - 15:30 | *Coffee break*   |
+| 15:30 - 17:00 | Session 4        |
+
+### Day 2
 
 | Time          | Activity         |
 | :------------ | :--------------- |

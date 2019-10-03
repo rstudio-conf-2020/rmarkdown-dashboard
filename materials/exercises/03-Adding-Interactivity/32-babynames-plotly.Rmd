@@ -1,0 +1,40 @@
+---
+title: "Babynames with Plotly HTML Widget"
+output: 
+  flexdashboard::flex_dashboard
+params:
+  name: Carl
+  gender: M
+  comparison_name: Garrett
+  comparison_gender: M
+  beginning_year: 1880
+  ending_year: 2017
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(dplyr)
+library(magrittr)
+library(babynames)
+library(plotly)
+
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Welcome
+
+In this dashboard, we'll plot the popularity of two names over the centuries
+
+### Proportional popularity of `r params$comparison_name` versus `r params$name` from `r params$beginning_year` to `r params$ending_year`
+
+```{r echo = FALSE, message = FALSE, warning = FALSE, out.width = "90%"}
+theme_set(theme_minimal())
+dataset <- babynames %>% 
+  filter(    (name == params$comparison_name & sex == params$comparison_gender) |
+             (name == params$name & sex == params$gender)) %>% 
+  filter(year >= params$beginning_year & year <= params$ending_year)
+p <-  ggplot(dataset) +
+    geom_line(aes(x = year, y = prop, group = name, color = name))
+ggplotly(p)
+```
+

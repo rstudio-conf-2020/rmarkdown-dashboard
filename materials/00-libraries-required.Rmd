@@ -1,0 +1,24 @@
+---
+title: "Packages needed for this course"
+author: "Carl Howe, RStudio"
+date: "9/5/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(geonames)
+library(dplyr)
+library(magrittr)
+library(rmarkdown)
+library(flexdashboard)
+library(leaflet)
+library(babynames)
+library(tufte)
+library(rticles)
+library(shiny)
+library(DT)
+library(reticulate)
+library(revealjs)
+library(plotly)
+knitr::opts_chunk$set(echo = TRUE)
+```

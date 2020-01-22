@@ -1,0 +1,36 @@
+---
+title: "Use LaTeX in R graphics via tikzDevice"
+author: "Frank Dobie"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+You will need the packages **tikzDevice**, **magick**, and **pdftools** to run this example.
+
+```{r, setup, include=FALSE}
+xfun::pkg_load2(c('tikzDevice', 'magick', 'pdftools'))
+```
+
+Because **tikzDevice** produces PDF plots, we need to convert PDF to PNG when the output format is not LaTeX/PDF (PDF plots don't work in HTML). Here is a helper function to do that:
+
+```{r}
+pdf2png = function(path) {
+  # only do the conversion for non-LaTeX output
+  if (knitr::is_latex_output()) return(path)
+  path2 = xfun::with_ext(path, "png")
+  img = magick::image_read_pdf(path)
+  magick::image_write(img, path2, format = "png")
+  path2
+}
+```
+
+Now we are ready to test LaTeX code in R graphics:
+
+```{r, dnorm, dev='tikz', fig.process=pdf2png, cache=TRUE}
+par(mar = c(4, 4, 2, .1))
+curve(dnorm, -3, 3, xlab = '$x$', ylab = '$\\phi(x)$',
+      main = 'The density function of $N(0, 1)$')
+text(-1, .2, cex = 3, col = 'blue',
+  '$\\phi(x)=\\frac{1}{\\sqrt{2\\pi}}e^{\\frac{-x^2}{2}}$')
+```

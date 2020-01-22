@@ -1,0 +1,6 @@
+*.html
+*.pdf
+*.docx
+*_files
+*_cache
+*-tikzDictionary

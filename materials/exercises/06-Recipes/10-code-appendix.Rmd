@@ -1,0 +1,38 @@
+---
+title: "All Code in the Appendix"
+author: "Frank Dobie"
+---
+
+## Setup
+
+Don't show code in the report (until the appendix).
+
+```{r, setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Section One
+
+Some code.
+
+```{r, some-code}
+1 + 2  # first chunk
+```
+
+## Section Two
+
+More code.
+
+```{r, more-code}
+3 - 4  # second chunk
+```
+
+## Appendix
+
+```{r, echo=TRUE, eval=FALSE, ref.label=knitr::all_labels()}
+```
+
+You can also select specific code chunks, e.g.,
+
+```{r, echo=TRUE, eval=FALSE, ref.label=c('some-code', 'more-code')}
+```

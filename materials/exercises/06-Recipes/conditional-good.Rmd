@@ -1,0 +1,7 @@
+Oh yeah, the regression coefficient was significant!
+
+```{r echo=FALSE}
+knitr::kable(b)
+```
+
+![I feel so happy!](https://slides.yihui.org/gif/goose-smile.gif)

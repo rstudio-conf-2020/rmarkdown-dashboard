@@ -1,0 +1,12 @@
+---
+title: "Combine words"
+author: "Frank Dobie"
+---
+
+We have these variables in the `iris` dataset: `r knitr::combine_words(names(iris))`.
+
+Quote the names: `r knitr::combine_words(names(iris), before = '"')`.
+
+Put them in backticks: `r knitr::combine_words(names(iris), before = '\x60')`.
+
+Put them in curly braces: `r knitr::combine_words(names(iris), before = '{', after = '}')`.

@@ -1,0 +1,18 @@
+---
+title: "Citations"
+author: "Frank Dobie"
+output: html_document
+bibliography: packages.bib
+---
+
+Automatically write R package citation entries to a `.bib` file:
+
+```{r, warning=FALSE}
+knitr::write_bib(c(.packages(), 'knitr', 'gifski'), 'packages.bib')
+```
+
+Then add `bibliography: packages.bib` to the YAML frontmatter. Now you can cite packages. For example: the R language [@R-base] is awesome. We used the **knitr** package [@R-knitr; @knitr2015] in our analysis. We also created animations via @R-gifski.
+
+Citations work for pretty much all output formats (try `pdf_document` or `word_document` by yourself).
+
+## References

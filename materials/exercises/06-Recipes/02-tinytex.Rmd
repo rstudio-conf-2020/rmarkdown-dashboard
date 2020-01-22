@@ -1,0 +1,40 @@
+---
+title: "TinyTeX can install missing LaTeX packages for you"
+author: "Frank Dobie"
+output: pdf_document
+---
+
+## Install TinyTeX
+
+```{r, eval=FALSE}
+if (!tinytex:::is_tinytex()) tinytex::install_tinytex()
+```
+
+## Manage LaTeX packages
+
+You can use `tinytex::tlmgr_install()` and `tinytex::tlmgr_remove()` to install and remove LaTeX packages from TinyTeX (TeX Live), respectively. For example, we can remove two packages **framed** and **hyperref** here, and they will be automatically reinstalled because R Markdown documents are compiled to PDF through the R package **tinytex**:
+
+```{r}
+options(tinytex.verbose = TRUE)  # usually you don't need this until you run into LaTeX trouble
+if (tinytex:::is_tinytex()) tinytex::tlmgr_remove(c('framed', 'hyperref'))
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

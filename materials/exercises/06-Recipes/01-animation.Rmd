@@ -1,0 +1,36 @@
+---
+title: Generate animations in R Markdown
+---
+
+Install packages if necessary.
+
+```{r}
+xfun::pkg_load2(c('animation', 'gganimate'))
+```
+
+You can play with examples in either **animation** (https://yihui.org/animation/examples/) or **gganimate** (https://github.com/thomasp85/gganimate). Below are two examples, and you can try other examples by yourself.
+
+```{r, grad-desc, animation.hook='gifski', interval=.1, cache=TRUE}
+library(animation)
+ani.options(nmax = 50)
+grad.desc()
+```
+
+Note that it may be slow to generate all plots (animation frames), so we enabled caching on these code chunks (`cache = TRUE`).
+
+```{r, box-animation, cache=TRUE}
+library(ggplot2)
+library(gganimate)
+
+ggplot(mtcars, aes(factor(cyl), mpg)) + 
+  geom_boxplot() + 
+  # Here comes the gganimate code
+  transition_states(
+    gear,
+    transition_length = 2,
+    state_length = 1
+  ) +
+  enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+```

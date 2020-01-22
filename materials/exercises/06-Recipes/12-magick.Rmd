@@ -1,0 +1,103 @@
+---
+title: "Post-process R plots from code chunks"
+author: "Frank Dobie"
+output:
+  html_document:
+    self_contained: false
+---
+
+The chunk option `fig.process` is a function that takes the figure file path and the list chunk options as the input, and returns a (new) file path of the figure.
+
+## A (relatively) simple example:
+
+```{r}
+rename_fig = function(x, options) {
+  # just for you to better understand what x is
+  message('The original filename is ', x)
+  # new name
+  x2 = gsub('-1.png', '.png', x)
+  message('The new filename will be ', x2)
+  file.rename(x, x2)
+  x2
+}
+```
+
+Try the above function:
+
+```{r, cars, fig.process=rename_fig}
+plot(cars)
+```
+
+Now we present more complicated examples.
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(fig.retina = 1)
+xfun::pkg_load2('magick')  # install magick if not already installed
+```
+
+A figure processing function based on **magick** (you can specify the **magick** function via the chunk option `magick.fun`, and arguments via the chunk option `magick.args`):
+
+```{r}
+magick_proc = function(x, options) {
+  FUN = options$magick.fun
+  if (is.null(FUN)) FUN = magick::image_blur
+  img = magick::image_read(x)
+  res = do.call(FUN, c(list(img), options$magick.args))
+  magick::image_write(res, x)
+  x
+}
+```
+
+# The orginal plot
+
+```{r, orig}
+dat = iris[, 1:2]
+par(mar = c(4, 4, .1, .2))
+smoothScatter(dat)
+sunflowerplot(dat, pch = 20, col = 7, seg.col = 7, size = .1, add = TRUE)
+```
+
+# Blurred version
+
+```{r, blur, ref.label='orig', fig.process=magick_proc, magick.args=list(radius = 10, sigma = 5)}
+```
+
+# The charcoal effect
+
+```{r, charcoal, ref.label='orig', fig.process=magick_proc, magick.fun=magick::image_charcoal}
+```
+
+# Negate it
+
+```{r, negate, ref.label='orig', fig.process=magick_proc, magick.fun=magick::image_negate}
+```
+
+# A figure processing function to add an R logo to your plots
+
+```{r}
+add_logo = function(x, options) {
+  # the plot created from the code chunk
+  img = magick::image_read(x)
+  # the R logo
+  logo = file.path(R.home("doc"), "html", "logo.jpg")
+  logo = magick::image_read(logo)
+  # the default gravity is northwest, and users can change it via the chunk
+  # option magick.gravity
+  if (is.null(g <- options$magick.gravity)) g = 'northwest'
+  # add the logo to the plot
+  img = magick::image_composite(img, logo, gravity = g)
+  # write out the new image 
+  magick::image_write(img, x)
+  x
+}
+```
+
+Test the `add_logo()` function:
+
+```{r, logo, ref.label='orig', fig.process=add_logo}
+```
+
+Add the logo to the northeast corner:
+
+```{r, logo-ne, ref.label='orig', fig.process=add_logo, magick.gravity='northeast'}
+```

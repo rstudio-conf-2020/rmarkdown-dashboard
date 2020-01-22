@@ -1,0 +1,55 @@
+---
+title: "Use other languages in R Markdown"
+author: "Frank Dobie"
+---
+
+## Python examples
+
+The Python support depends on the **reticulate** package in R:
+
+```{r}
+xfun::pkg_load2('reticulate')  # install reticulate if not installed
+library(reticulate)
+```
+
+Define a variable:
+
+```{python}
+x = 42
+```
+
+Use the variable in another code chunks:
+
+```{python}
+print(x * 2)
+```
+
+Access the variable from R:
+
+```{r}
+py$x
+```
+
+Create a Python array from R:
+
+```{r}
+py$y = 1:10
+```
+
+Now `y` is available in Python:
+
+```{python}
+print(y)
+```
+
+## Shell scripts
+
+```{sh}
+echo $HOME
+```
+
+```{sh}
+ls *.html
+```
+
+See https://bookdown.org/yihui/rmarkdown/language-engines.html for more examples.

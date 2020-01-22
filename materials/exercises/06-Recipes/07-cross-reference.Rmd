@@ -1,0 +1,32 @@
+---
+title: "Cross-references with bookdown"
+author: "Frank Dobie"
+output:
+  bookdown::html_document2:
+    toc: true
+  bookdown::pdf_document2:
+    keep_tex: true
+  bookdown::word_document2: null
+---
+
+# Introduction {#intro}
+
+A brief introduction.
+
+```{r, cool, fig.cap="Here is a boring plot."}
+plot(cars)
+```
+
+```{r, nice}
+knitr::kable(head(mtcars), caption = "And this is a boring table.")
+```
+
+\begin{equation}
+a^2 + b^2 = c^2 (\#eq:great)
+\end{equation}
+
+# Results
+
+See Figure \@ref(fig:cool) and Table \@ref(tab:nice) in Section \@ref(intro).
+
+And Equation \@ref(eq:great).

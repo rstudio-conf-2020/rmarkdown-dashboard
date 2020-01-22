@@ -1,0 +1,22 @@
+---
+title: Generate a plot and display it elsewhere
+---
+
+## Introduction
+
+We generate a plot in this code chunk but do not show it:
+
+```{r cars-plot, dev='png', fig.show='hide'}
+par(mar = c(4, 4, 1, .1))
+plot(cars)
+```
+
+## Analysis
+
+More text here.
+
+## Results
+
+In another section, we show the plot:
+
+![A nice plot.](`r knitr::fig_chunk('cars-plot', 'png')`)

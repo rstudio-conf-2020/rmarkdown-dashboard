@@ -1,0 +1,33 @@
+---
+title: Reading code from external files
+---
+
+The chunk option `code` takes a character vector, which will be the source code of the code chunk, e.g.,
+
+```{r, code=c('# The code in this chunk was from the chunk option `code`', 'print("Hello code!")')}
+```
+
+Read a script into a code chunk:
+
+```{r, code=readLines('19-code.R')}
+```
+
+Of course, you can also read Python scripts:
+
+```{python, code=readLines('19-python.py')}
+```
+
+Read multiple chunks with `knitr::read_chunk()`:
+
+```{r}
+knitr::read_chunk('19-multiple.R')
+```
+
+Then use the code chunks with the appropriate labels, e.g.,
+
+```{r, chunk-b}
+```
+
+```{r, chunk-a}
+```
+

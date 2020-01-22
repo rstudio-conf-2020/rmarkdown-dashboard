@@ -1,0 +1,46 @@
+---
+title: Truncate long text output
+---
+
+Set up a new `output` hook to truncate the text output to `n` lines, where `n` is specified by the chunk option `out.lines`.
+
+```{r, setup}
+# make a copy of the built-in output hook
+hook_output <- knitr::knit_hooks$get("output")
+
+# set a new output hook to truncate text output
+knitr::knit_hooks$set(output = function(x, options) {
+  print(x)  # you don't really need this; it is only for you to understand what x is
+  if (!is.null(n <- options$out.lines)) {
+    x <- xfun::split_lines(x)
+    if (length(x) > n) {
+      # truncate the output
+      x <- c(head(x, n), "....\n")
+    }
+    x <- paste(x, collapse = "\n")
+  }
+  hook_output(x, options)
+})
+```
+
+Now let's test the new `output` hook. We only show the first 4 lines of the `cars` data:
+
+```{r, out.lines=4}
+cars
+```
+
+Can you modify the above hook to print the first n/2 and last n/2 lines when `out.lines = n`? Like this:
+
+```
+##    speed dist
+## 1      4    2
+## 2      4   10
+## 3      7    4
+## 4      7   22
+....
+## 46    24   70
+## 47    24   92
+## 48    24   93
+## 49    24  120
+## 50    25   85
+```

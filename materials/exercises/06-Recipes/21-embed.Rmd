@@ -23,3 +23,8 @@ unlink('iris.csv')
 ```
 
 You can embed multiple files with `xfun::embed_files()` or an entire directory with `xfun::embed_dir()`. Please note that Windows users need the `zip` command, which is available if you have installed [Rtools](https://cloud.r-project.org/bin/windows/Rtools/).
+
+```{r}
+# check if you have `zip`
+Sys.which('zip')
+```

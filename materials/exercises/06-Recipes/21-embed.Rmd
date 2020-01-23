@@ -1,0 +1,25 @@
+---
+title: Embed files in HTML output
+---
+
+With `xfun::embed_file()`, you can create a link on which your reader can click to download the file.
+
+```{r, setup, include=FALSE}
+# make sure these packages are installed
+xfun::pkg_load2(c('base64enc', 'htmltools', 'mime'))
+```
+
+```{r}
+# embed the current Rmd source file
+(f <- knitr::current_input())
+xfun::embed_file(f)
+```
+
+```{r}
+# embed a CSV file
+write.csv(iris, 'iris.csv', row.names = FALSE)
+xfun::embed_file('iris.csv', text = 'Click here to download iris.csv.')
+unlink('iris.csv')
+```
+
+You can embed multiple files with `xfun::embed_files()` or an entire directory with `xfun::embed_dir()`. Please note that Windows users need the `zip` command, which is available if you have installed [Rtools](https://cloud.r-project.org/bin/windows/Rtools/).

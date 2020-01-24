@@ -1,8 +1,8 @@
 ---
-title: "Simple Markdown File"
+title: "Simple Powerpoint File"
 output: 
   powerpoint_presentation:
-    reference_doc: templates/earl-template.pptx
+    reference_doc: templates/conf-template.pptx
 ---
 
 ```{r setup, include=FALSE}

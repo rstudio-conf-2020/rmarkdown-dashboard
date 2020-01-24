@@ -1,0 +1,12 @@
+name: 23-revealjs-presentation
+title: 23-revealjs-Presentation
+username: carlhowe
+account: carlhowe
+server: workshops.rstudio.com
+hostUrl: https://workshops.rstudio.com/rsconnect/__api__
+appId: 2
+bundleId: 3
+url: https://workshops.rstudio.com/rsconnect/content/2/
+when: 1579885489.96187
+asMultiple: FALSE
+asStatic: TRUE

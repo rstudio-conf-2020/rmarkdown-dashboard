@@ -6,8 +6,8 @@ output:
 runtime: flexdashboard
 params:
   geonames_account: "rstudio_dashboard"
-  my_city: "Boston"
-  my_airport: "KBOS"
+  my_city: "San Francisco"
+  my_airport: "KSFO"
 ---
 
 ```{r setup, include=FALSE}
@@ -140,5 +140,4 @@ leaflet(width = 500, height = 500) %>%
 ```
 
 
-  
 

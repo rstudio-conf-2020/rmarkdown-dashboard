@@ -1,5 +1,5 @@
 ---
-title: "revealjs Markdown File"
+title: "A reveal.js presentation"
 output: 
   revealjs::revealjs_presentation:
     self_contained: true
@@ -10,9 +10,11 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-# Slide Section 1 {data-background=images/tower.png data-background-size=100%}
+# rstudio::conf 2020 {data-background=images/sf-image.jpg data-background-size=100%}
 
-## Heading For Bullets
+Press the down arrow
+
+## R Markdown Presentations 
 
 - Bullet 1
 - Bullet 2
@@ -38,7 +40,7 @@ $$
 plot(pressure)
 ```
 
-# Slide Section 2 {data-background=images/london_skyline.png data-background-size=100%}
+# Second Presentation Section {data-background=images/golden-gate.jpg data-background-size=100%}
 
 ## Another Section Head
 
@@ -46,4 +48,4 @@ This section is intended to show how multiple levels of headers work. The ## cre
 
 ### Subheads or Tab Titles
 
-The level 3 header just shows up as a sub-header.
+However, a level 3 header just shows up as a sub-header on the same slide.

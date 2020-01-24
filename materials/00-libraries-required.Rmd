@@ -1,7 +1,6 @@
 ---
 title: "Packages needed for this course"
 author: "Carl Howe, RStudio"
-date: "9/5/2019"
 output: html_document
 ---
 

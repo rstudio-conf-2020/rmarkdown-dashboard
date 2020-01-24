@@ -20,14 +20,14 @@ This is an R Markdown document. Markdown is a simple formatting syntax for autho
 
 This document is created directly from the original RStudio R Markdown template. I simply typed in all the text you see below to replace the summary of *cars* and the graph of *pressure*.
 
-Instead of printing out a summary of the cars dataset, I've modified the default template here to get some selected bits of weather from [London City Airport](https://www.londoncityairport.com), and print them out instead. Don't get hung up on the 
+Instead of printing out a summary of the cars dataset, I've modified the default template here to get some selected bits of weather from [London City Airport](https://www.londoncityairport.com), and print them out instead. Don't get hung up on the functions syntax -- just kind of follow along.
 
 ```{r get_weather}
-options(geonamesUsername="rstudio_dashboard")    #  Login name for geonames
-LCY_observation    <- GNweatherIcao("EGLC")      # EGLC is London City
-london_weather <- LCY_observation %>%            # Extract 5 columns
+options(geonamesUsername="rstudio_dashboard")    # Insert your login name for geonames
+SFO_observation    <- GNweatherIcao("KSFO")      # KSFO is San Francisco Airport
+SFO_weather <- SFO_observation %>%            # Extract 5 columns
     select(stationName, datetime, temperature, humidity)
-print(london_weather)
+print(SFO_weather)
 ```
 
 ## Inserting Links to Other Sites
@@ -53,11 +53,11 @@ Local images are easy to include in R Markdown. The general form is as follows:
 
 So to include an image of the London skyline that I've conveniently stored in the images directory for this R project, I'd write
 
-    ![*London Skyline*](images/london_skyline.png)
+    ![*Golden Gate Bridge*](images/golden-gate.jpg)
 
 Here's what that photo looks like:
 
-![*London Skyline*](images/london_skyline.png)
+![*Golden Gate Bridge*](images/golden-gate.jpg)
 
 ## Getting Images From Other Sites
 

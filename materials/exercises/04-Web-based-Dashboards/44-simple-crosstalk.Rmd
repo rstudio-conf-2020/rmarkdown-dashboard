@@ -1,0 +1,33 @@
+---
+title: Fiji earthquakes
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: fill
+---
+
+```{r setup, warning = FALSE}
+library(flexdashboard)
+library(crosstalk)
+library(leaflet)
+library(DT)
+```
+
+
+```{r shared_data, warning = FALSE}
+shared_df <- SharedData$new(quakes[sample(nrow(quakes), 10),])
+```
+
+### Column 1 Map
+
+```{r map}
+  leaflet(shared_df) %>% addTiles() %>% addMarkers()
+```
+
+### Column 2 Table
+
+```{r table}
+  datatable(shared_df)
+```
+
+

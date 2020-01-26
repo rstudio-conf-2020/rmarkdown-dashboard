@@ -7,15 +7,6 @@ by Carl Howe and Yihui Xie
 
 -----
 
-INSTRUCTIONS FOR INSTRUCTORS: Please insert information about your
-workshop below. Then, add workshop content in the materials folder and
-link to each session’s materials from the schedule below. You are
-welcomed to add more rows to the schedule. We just ask that you take
-breaks at the specified times. Once you are done adding information, you
-can remove these instructions from the README.
-
------
-
 :spiral_calendar: January 27 and 28, 2020  
 :alarm_clock:     09:00 - 17:00  
 :hotel:           Continental Ballroom Room 7-9
@@ -77,23 +68,23 @@ You will need accounts on 3 cloud services to do all the exercises in this cours
 
 | Time          | Activity         |
 | :------------ | :--------------- |
-| 09:00 - 10:30 | R Markdown Basics        |
+| 09:00 - 10:30 | [R Markdown Basics](https://github.com/rstudio-conf-2020/rmarkdown-dashboard/tree/master/materials/exercises/01-Introduction)        |
 | 10:30 - 11:00 | *Coffee break*   |
-| 11:00 - 12:30 | Publishing Outputs       |
+| 11:00 - 12:30 | [Publishing Outputs](https://github.com/rstudio-conf-2020/rmarkdown-dashboard/tree/master/materials/exercises/02-Publishing-Outputs)       |
 | 12:00 - 13:30 | *Lunch break*    |
-| 13:30 - 15:00 | Adding Interactivity       |
+| 13:30 - 15:00 | [Adding Interactivity](https://github.com/rstudio-conf-2020/rmarkdown-dashboard/tree/master/materials/exercises/03-Adding-Interactivity)       |
 | 15:00 - 15:30 | *Coffee break*   |
-| 15:30 - 17:00 | Web-based Dashboards      |
+| 15:30 - 17:00 |[ Web-based Dashboards](https://github.com/rstudio-conf-2020/rmarkdown-dashboard/tree/master/materials/exercises/04-Web-based-Dashboards)      |
 
 ### Day 2
 
 | Time          | Activity         |
 | :------------ | :--------------- |
-| 09:00 - 10:30 | Shiny Dashboards      |
+| 09:00 - 10:30 | [Shiny Dashboards](https://github.com/rstudio-conf-2020/rmarkdown-dashboard/tree/master/materials/exercises/05-Shiny-Dashboards)      |
 | 10:30 - 11:00 | *Coffee break*   |
-| 11:00 - 12:30 | Reactivity       |
+| 11:00 - 12:30 | [Reactivity](https://github.com/rstudio-conf-2020/rmarkdown-dashboard/tree/master/materials/exercises/05-Shiny-Dashboards)      |
 | 12:30 - 13:30 | *Lunch break*    |
-| 13:30 - 15:00 | Yihui Xie Master Class: R Markdown Recipes      |
+| 13:30 - 15:00 | [Yihui Xie Master Class: R Markdown Recipes](https://github.com/rstudio-conf-2020/rmarkdown-dashboard/tree/master/materials/exercises/06-Recipes)      |
 | 15:00 - 15:30 | *Coffee break*   |
 | 15:30 - 17:00 | Yihui Xie Answers Your Questions        |
 

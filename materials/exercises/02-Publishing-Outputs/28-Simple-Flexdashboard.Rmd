@@ -33,9 +33,9 @@ $$
 \int_{-\infty}^\infty e^{-x^2} dx = \sqrt{\pi}
 $$
 
-### A Plot
+# A Plot
 
-Here's a Level 3 plot
+Here's a Level 1 plot
 
 ```{r pressure}
 plot(pressure)

@@ -55,12 +55,17 @@ While no experience with R is required for our work with R Markdown, attendees w
 
 ## Prework
 
-You will need accounts on 3 cloud services to do all the exercises in this course:
+You will need accounts on 4 cloud services to do all the exercises in this course:
 
-- *rstudio.cloud*. If you don't already have one, please create an `rstudio.cloud` account for yourself so that you can do the exercises associated with this course. This will only require an email address, and no personal information will be recorded. 
-- *rpubs.com*. If you don't already have one, please create an `RPubs.com` account so that you can publish your RMarkdown documents. Again, no personal information other than your email addrss will be recorded.
-- *shinyapps.io*. If you don't already have one, please create a `Shinyapps.io` account so that you can publish your Shiny dashboards. 
+- *geonames.org*. This service provides real-time data that we use in our first dashboard. Please create a new account at [geonames.org/login](https://geonames.org/login] so that your dashboard won't fail due to the entire class trying to share one account. The service only requires an email address and name to register.
+- *rstudio.cloud*. If you don't already have one, please create an [rstudio.cloud](https://rstudio.cloud) account for yourself so that you can do the exercises associated with this course. This will only require an email address, and no personal information will be recorded. 
+- *rpubs.com*. If you don't already have one, please create an [RPubs.com](https://rpubs.com) account so that you can publish your RMarkdown documents. Again, no personal information other than your email addrss will be recorded.
+- *shinyapps.io*. If you don't already have one, please create a [Shinyapps.io](shinyapps.io) account so that you can publish your Shiny dashboards.
 
+## Source materials
+All the materials for this course, including Keynote slide sources, are contained in a github repo at https://rstd.io/RMAID.
+
+We intend this course to be taught using RStudio.cloud, a cloud-based implementation of the RStudio development environment. In this environment, students receive a link to a workspace that contains the github materials referenced above, but split up into multiple projects. We recommend that any educator who wishes to use our materials clone the github repository above and then pull the repository contents into projects on rstudio.cloud using the *New project from github repository* option.
 
 ## Schedule
 

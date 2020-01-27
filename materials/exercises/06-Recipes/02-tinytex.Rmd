@@ -6,8 +6,10 @@ output: pdf_document
 
 ## Install TinyTeX
 
+Check if `tinytex:::is_tinytex()` returns `TRUE`. If not, you may install TinyTeX:
+
 ```{r, eval=FALSE}
-if (!tinytex:::is_tinytex()) tinytex::install_tinytex()
+tinytex::install_tinytex()
 ```
 
 ## Manage LaTeX packages
